@@ -1,6 +1,6 @@
 <template>
 	<div class="product">
-		<mt-header fixed title="全部产品分类">
+		<mt-header fixed :title="title">
 		    <mt-button icon="back" slot="left" @click="goBack">返回</mt-button>
 		</mt-header>
 		<div class="search">
@@ -10,7 +10,7 @@
 			<h3 v-text="item.title"></h3>
 			<div class="pro">
 				<a href="#">
-					<div class="pro_img"><img :src="item.img" alt=""></div>
+					<div class="pro_img"><img :src="item.img" alt="" @click="goto"></div>
 					<div class="pro_name" v-text="item.subtitle"></div>
 					<div class="pro_btm clearfix">
 						<div class="fl">
@@ -35,6 +35,8 @@
 		data(){
 			return {
 				value:'',
+				titles:['红茶','绿茶','乌龙茶','黑茶','白茶','花茶','茶具'],
+				title:'红茶',
 				all_lists:[
 					[
 						{title:'正山小种',img:'/static/img/pro1_1.png',subtitle:'武夷山桐木关正山小种红茶200g',new_price:'99.00',old_price:'228.00',sales:'256'},
@@ -93,8 +95,12 @@
 			},
 			getlist(){
 				if(this.$route.params.id){
+					this.title = this.titles[this.$route.params.id]
 					this.lists = this.all_lists[this.$route.params.id]
 				}
+			},
+			goto(){
+				this.$router.push('/dragonDetail')
 			}
 		}
 	}
@@ -110,7 +116,7 @@
 	}
 	/*头部	*/
 	.product .mint-header{
-		background-color:#1b1b20;
+		background-color:#222;
 		color: #fff;
 		font-size: 0.8rem;
 		z-index: 1000;
@@ -129,7 +135,7 @@
 	.product .search{
 		width: 80%;
 		position: relative;
-		top:2.5rem;
+		top:3rem;
 		left: 10%;
 		z-index: 1;
 	}
