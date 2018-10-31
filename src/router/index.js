@@ -26,7 +26,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     		{ path:'/home',component:Home },
-        { path:'/dragonDetail',component:DragonDetail },
+        { path:'/dragonDetail',name:'dragonDetail',component:DragonDetail },
     		{ path:'/classify',component:Classify },
     		{ path:'/product',name:'product',component:product },
         { path:'/shopping',component:Shopping },
