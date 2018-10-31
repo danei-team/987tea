@@ -14,17 +14,17 @@
                 <div class="mui-card-content-inner">
                     <!-- 购物车 -->
                     <ul class="mui-table-view"> 
-                        <li class="mui-table-view-cell mui-media" v-for="item of list" :key="item.id">
+                        <li class="mui-table-view-cell mui-media" v-for="(item,index) of list" :key="index">
                             <img class="mui-media-object mui-pull-left" :src="item.img_url">
                             <div class="mui-media-body">
-                                <p>{{item.title}}</p>
+                                <p>{{item.subtitle}}</p>
                                 <div class='mui-ellipsis'>
-                                    <span>价格：￥{{item.price}}</span>
+                                    <span>价格：￥{{item.new_price}}</span>
                                     <div class="mui-numbox">
-                                        <button class="mui-btn mui-btn-numbox-minus" type="button"   @click="setSub(item.id)">-</button>
-                                        <input class="mui-input-numbox" type="number" v-model="item.count"/>
+                                        <button class="mui-btn mui-btn-numbox-minus" type="button"   @click="setSub(index)">-</button>
+                                        <input class="mui-input-numbox" type="number" v-model="item.num"/>
                                         <button class="mui-btn mui-btn-numbox-plus" type="button"
-                                      @click="setAdd(item.id)">+</button>
+                                      @click="setAdd(index)">+</button>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +35,8 @@
 			<div class="divider"></div>			
             <div class="mui-card-footer">
                 <span>小计：￥{{getsubtotal}} </span>  <!-- 调用总价函数 -->
-                <mt-button type="primary" size="small">立即购买</mt-button>
+                <mt-button type="danger" size="small" class="clearCar" @click="clearCar">清空购物车</mt-button>
+                <mt-button type="primary" size="small">立即购买</mt-button> 
             </div>
         </div>
     </div>
@@ -49,7 +50,7 @@
 	export default{
 		data(){
 			return{
-				show:1,
+				show:0,
 				list:[
 					{id:1,title:'红茶',price:'8888',count:1,img_url:'/static/img/wr1.jpg'},
 					{id:2,title:'红茶',price:'8888',count:1,img_url:'/static/img/wr1.jpg'},					
@@ -70,7 +71,13 @@
 			// 	this.$router.push({path:'/login',component:Login})
 			// }
 			// console.log('tai',this.loginStatus) 
-			// console.log(0)
+            // console.log(0)
+            if(this.$store.getters.optList.length){
+                this.list = this.$store.getters.optList;
+                this.show = 1
+            }else{
+                this.show = 0
+            }
 		},
 		methods:{
 			goBack:function(){
@@ -78,40 +85,32 @@
 			},
 			//购物车-
             setSub(id){
-                for(var item of this.list){
-                    //如果item.id 等于 当前id 
-                    var count = item.count;
-                    if(item.id == id){
-                        if(item.count>1)
-                        item.count--;
-                    }
-                }
+                if(this.list[id].num > 1){
+                    this.list[id].num--
+                } 
 			},
 			setAdd(id){
-				console.log(id)
-                //获取当前购物车id，遍历count
-                for(var item of this.list){
-                    //如果item.id 等于 当前id 
-                    var count = item.count;
-                    if(item.id == id){
-                        if(item.count<99)
-                        item.count++;
-                    }
-                }
+				 if(this.list[id].num < 99){
+                    this.list[id].num++
+                } 
             },
+            clearCar(){
+                this.$store.commit("clearCount")
+                this.show = 0
+            }
 		},
-	
-	//计算属性：
-	computed:{
-		getsubtotal:function(){
-			var sum = 0;
-			for(var item of this.list){
-				sum += item.price * item.count;
-			}
-			return sum;
-		}
-	}
-}
+    
+        //计算属性：
+        computed:{
+            getsubtotal:function(){
+                var sum = 0;
+                for(var item of this.list){
+                    sum += item.new_price * item.num;
+                }
+                return sum;
+            }
+        }
+    }
 </script>
 <style>
 ul{list-style-type: none;}
@@ -133,8 +132,9 @@ ul{list-style-type: none;}
 		font-size: 0.8rem;
 	}
 	.shopping .emptyShopping p{
+        padding-top:4rem;
 		color: #999;
-		font-size: 0.7rem;
+		font-size: 1rem;
 		width: 100%;
 		text-align: center;
 	}
@@ -142,7 +142,7 @@ ul{list-style-type: none;}
 .mui-table-view .mui-table-view-cell .mui-media-object{ max-width:50px;max-height:50px;}
 .mui-table-view .mui-table-view-cell { padding:6px }
 .mui-table-view .mui-table-view-cell .mui-ellipsis{ display:flex; justify-content: space-between}
-
+.clearCar{margin-left:45px;}
 /*分割块*/
 .divider{height:10px;background:#f1f1f1;}
 
@@ -246,6 +246,9 @@ ul{list-style-type: none;}
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.mui-media-body p{
+    margin-bottom:0.5rem;
 }
 .mui-numbox {
     position: relative;

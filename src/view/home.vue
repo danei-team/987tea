@@ -5,8 +5,10 @@
 			<div class="search">
 				<mt-search v-model="value"  cancel-text="取消"  placeholder="搜索您想要的产品"></mt-search>
 			</div>
-			<div class="icon">
-				<i class="fa fa-bars" aria-hidden="true" @click="droplist" style=""></i>
+			<div class="icon"  @click="droplist">
+				<img src="/static/img/teapot.png" class="img1">
+				<img src="/static/img/cup1.png" class="img2">
+				<div class="img_box"><img src="/static/img/cup.png" class="img3"></div>
 			</div>
 		</header>
 		<droplist style="height:0px" id="droplist"></droplist>
@@ -115,7 +117,8 @@
 				// Img:[img14,img15,img16,img17,img18,img19],
 				loading:false,
 				products:'',
-				showList:false
+				showList:false,
+				timer:null
 			}
 		},
 		components:{
@@ -136,15 +139,23 @@
 			},
 			droplist:function(){
 				var droplist = document.getElementById('droplist')
-				var icon = document.querySelector('.icon i')
+				var img1 = document.querySelector('.icon .img1')
+				var img_box = document.querySelector('.icon .img_box')
+				var height = 20;
 				if(this.showList){
 					this.showList = false
 					droplist.style.height = '0px'
-					icon.style = 'transform:rotate(0deg);'
+					img1.style = 'transform:rotate(0deg);'
+					clearInterval(this.timer)
 				}else{
 					this.showList = true
 					droplist.style.height = '336px'
-					icon.style = 'transform:rotate(90deg);'
+					img1.style = 'transform:rotate(-30deg);'
+					this.timer = setInterval(function(){
+						height--;
+						if(height==0) height=20;						
+						img_box.style.height = height+'px';
+					},150)
 				}
 			},
 			goto(){
@@ -183,7 +194,7 @@
 		float: left;
 		width: 50%;
 		text-align: center;
-		margin-top: 0.5rem;
+		margin-top: 0.2rem;
 	}
 	.home header .search input{
 		font-size: 0.1rem;
@@ -207,12 +218,15 @@
 		width: 10%;
 		float: right;
 		margin-right: 0.5rem;
-		line-height: 3rem;
 		text-align: center;
 		font-size: 1rem;
+		position: relative;top: 15px;
 		color: #fff;
 	}
-	.icon i{transition: .5s all;}
+	.icon .img1{position: absolute;top: -7px;left: 10px;width: 32px;height: 32px;transform-origin: center center;transition: .5s all ease-in-out;transform: rotate(0deg);}
+	.icon .img2{position: absolute;top: 12px;left: -2px;width: 22px;height: 22px;}
+	.img_box{position: absolute;top: 12px;left: -2px;width: 22px;height: 22px;overflow: hidden;}
+	.icon .img3{width: 22px;height: 20px;transition: .5s all ease-in-out;}	
 	/*轮播图*/
 	.home .swipe{
 		width: 100%;

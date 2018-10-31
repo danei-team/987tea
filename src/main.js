@@ -10,6 +10,7 @@ import store from './store'
 
 // 移动端高清屏适配方案
 import './rem.js'
+import Vuex from 'vuex'
 
 
 Vue.use(VueResource)

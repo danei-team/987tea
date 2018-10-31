@@ -18,6 +18,9 @@
 			  		<p><i class="fa fa-shopping-cart" aria-hidden="true"></i></p>
 			    	<p>购物车</p>
 			    </router-link>
+				<div class="count" v-if="this.$store.getters.optCount > 0">
+					<span>{{this.$store.getters.optCount}}</span>
+				</div>
 		  	</mt-tab-item>
 		  	<mt-tab-item id="user">
 		  		<router-link to="/personal">
@@ -37,6 +40,9 @@
 				selected:'',
 				fixed:true
 			}
+		},
+		mounted(){
+			
 		}
 	} 
 </script>
@@ -58,4 +64,6 @@
 	.navBar a.router-link-active p{
 		color: #ff3600;
 	}
+	#cart{position: relative;}
+	.count{position:absolute;top:5px;right:135px;height:16px;width:16px;background:red;text-align: center;line-height: 15px;border-radius:50%;color:#fafafa}
 </style>

@@ -28,7 +28,7 @@
 				 </div> 
 				 <div class="pay">
 				<mt-button type="primary" size="small">立即购买</mt-button>
-				  <mt-button type="danger" size="small">加入购物车</mt-button>
+				  <mt-button type="danger" size="small" @click="addCart">加入购物车</mt-button>
 				  </div>
 			</div>
 			<div class="divider"></div>
@@ -71,6 +71,17 @@ import NavBar from '@/view/navBar'
 			}
 		},
 		methods:{
+			addCart(){
+				this.$store.commit("increment")
+				var shop = {
+					num:this.num,
+					subtitle:this.subtitle,
+					img_url:this.banner[0].img_url,
+					new_price:this.new_price
+				}
+				this.$store.commit("addCart",shop)
+				// console.log(this.subtitle)
+			},
 			goBack:function(){
 				this.$router.go(-1);
 			},
@@ -81,7 +92,7 @@ import NavBar from '@/view/navBar'
        goAdd(){
           if(this.num>=99){return;}
           this.num = parseInt(this.num) + 1;
-			 },
+		},
 			 getParams(){
 				 if(this.$route.params.title) this.title = this.$route.params.title
 				 if(this.$route.params.subtitle) this.subtitle = this.$route.params.subtitle
