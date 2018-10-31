@@ -55,6 +55,7 @@
 			}
 		},
 		mounted:function(){
+			this.loginForm = {username:'',password:''}
 			this.getData();
 			// this.getCaptchas();
 		},

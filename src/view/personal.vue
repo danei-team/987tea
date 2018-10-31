@@ -81,7 +81,7 @@
 				<span>绑定手机</span>
 				<span class="right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
 			</div>
-			<div class="login">
+			<div class="login" @click="exit">
 				<mt-button class="btn"><i class="fa fa-sign-in" aria-hidden="true"></i></mt-button>
 				<span>退出登录</span>
 				<span class="right"><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
@@ -119,7 +119,11 @@
 			goBack:function(){
 				this.$router.go(-1);
 			},
-		}
+			exit(){
+				store.dispatch('setloginStatus',false);
+				this.$router.push('login');
+			}			
+		},
 	}
 </script>
 <style>
