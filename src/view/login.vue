@@ -61,14 +61,11 @@
 		methods:{
 			getData:function(){
 				this.$http.get(api.login).then((response) => {
-					console.log("登录页面response的值",response);
 					this.form=response.data;
 				})
 
 			},
 			loginSubmit:function(){
-				console.log("this.loginForm.username：",this.loginForm.username);
-				console.log("this.loginForm.password：",this.loginForm.password);
 				var flag=0;
 				for(let i=0;i<this.form.length;i++){
 					if(this.form[i].username === this.loginForm.username && this.form[i].password == this.loginForm.password){

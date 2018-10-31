@@ -13,7 +13,7 @@
 		<section class="swipe">
 			<mt-swipe :auto="4000">
 				<mt-swipe-item v-for="(item,index) in imgs" :key="index">
-					<img v-lazy="item">
+					<img v-lazy="item" @click="goto2(item)">
 				</mt-swipe-item>
 			</mt-swipe>
 		</section>
@@ -34,7 +34,7 @@
 		</section>
 		<section class="part2">
 			<div class="part2-content">
-				<div class="part2-img">
+				<div class="part2-img" @click="goto">
 					<p>
 						<img src="../assets/img/4.png">
 					</p>
@@ -48,7 +48,7 @@
 		<section class="part3">
 			<h3>8大热销茶叶品类</h3>
 			<p>总有你想不到的低价</p>
-			<div v-for="(item,index) in list" class="list-img" :key="index">
+			<div v-for="(item,index) in list" class="list-img" :key="index" @click="goto2(item)">
 				<img v-lazy="item">
 			</div>
 		</section>
@@ -146,6 +146,12 @@
 					droplist.style.height = '336px'
 					icon.style = 'transform:rotate(90deg);'
 				}
+			},
+			goto(){
+				this.$router.push({name:'dragonDetail',params:{}})
+			},
+			goto2(img){
+				this.$router.push({name:'dragonDetail',params:{img}})
 			}
 		}
 	}

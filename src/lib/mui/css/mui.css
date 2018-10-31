@@ -2848,7 +2848,7 @@ select:focus
     -webkit-user-modify: read-write-plaintext-only;
 }
 
-select,
+/*select,
 textarea,
 input[type='text'],
 input[type='search'],
@@ -2881,7 +2881,7 @@ input[type='color']
 
     -webkit-appearance: none;
 }
-
+*/
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button
 {

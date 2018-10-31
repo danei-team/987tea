@@ -11,12 +11,12 @@
 		<div class="divider"></div>
 		<div class="cell">
 			<div class="cell-item">
-				<p>顶峰 开化龙顶 2017明前茶 绿茶  50g 黄罐单罐<span>热卖中</span></p>
+				<p>{{subtitle}}<span>热卖中</span></p>
 			</div>
 			
 			<div class="cell-item">
-				<p class="oldprice">市场价:998</p>
-				<p class="newprice">销售价:98</p>
+				<p class="oldprice">市场价:{{old_price}}</p>
+				<p class="newprice">销售价:{{new_price}}</p>
 			</div>
 			
 			<div class="cell-item">
@@ -37,7 +37,7 @@
 		</div>
 		<div class="cell-item argument">
 			<p>
-			名称： 西湖龙井<br>
+			名称： {{subtitle}}<br>
 			原产地： 浙江<br>
 			净含量： 125g*2<br>
 			包装： 礼盒装<br>
@@ -63,7 +63,11 @@ import NavBar from '@/view/navBar'
 				{title:'龙顶',img_url:'/static/img/new2.jpg'},
 				{title:'龙顶',img_url:'/static/img/new3.jpg'},
 				{title:'龙顶',img_url:'/static/img/new4.jpg'},],
-				title:"顶峰 开化龙顶 2017明前茶 绿茶  50g 黄罐单罐"
+				title:"龙顶",
+				subtitle:"顶峰 开化龙顶 2017明前茶 绿茶  50g 黄罐单罐",
+				img:'/static/img/new1.jpg',
+				old_price:'998',
+				new_price:'98'
 			}
 		},
 		methods:{
@@ -77,15 +81,25 @@ import NavBar from '@/view/navBar'
        goAdd(){
           if(this.num>=99){return;}
           this.num = parseInt(this.num) + 1;
-       }
+			 },
+			 getParams(){
+				 if(this.$route.params.title) this.title = this.$route.params.title
+				 if(this.$route.params.subtitle) this.subtitle = this.$route.params.subtitle
+				 if(this.$route.params.img) this.banner[0].img_url = this.$route.params.img
+				 if(this.$route.params.old_price) this.old_price = this.$route.params.old_price
+				 if(this.$route.params.new_price) this.new_price = this.$route.params.new_price
+			 }
 		},
 		components:{
 			'Swipe':Swipe.name,
 			'SwipeItem':SwipeItem.name,
 			'Button':Button.name,
 			NavBar
+		},
+		mounted(){
+			scrollTo(0,0)
+			this.getParams()
 		}
-		
 	}
 </script>
 <style>
@@ -103,7 +117,6 @@ import NavBar from '@/view/navBar'
 	}
 	.swipe{
 		height:10rem;
-		background: red;
 	}
 .banner{
 	width:100%;

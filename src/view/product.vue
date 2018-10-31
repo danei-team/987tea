@@ -10,7 +10,7 @@
 			<h3 v-text="item.title"></h3>
 			<div class="pro">
 				<a href="#">
-					<div class="pro_img"><img :src="item.img" alt="" @click="goto"></div>
+					<div class="pro_img"><img :src="item.img" alt="" @click="goto(item.title,item.subtitle,item.img,item.old_price,item.new_price)"></div>
 					<div class="pro_name" v-text="item.subtitle"></div>
 					<div class="pro_btm clearfix">
 						<div class="fl">
@@ -99,8 +99,8 @@
 					this.lists = this.all_lists[this.$route.params.id]
 				}
 			},
-			goto(){
-				this.$router.push('/dragonDetail')
+			goto(title,subtitle,img,old_price,new_price){
+				this.$router.push({name:'dragonDetail',params:{title,subtitle,img,old_price,new_price}})
 			}
 		}
 	}
