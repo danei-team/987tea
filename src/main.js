@@ -6,7 +6,10 @@ import App from './App'
 import router from './router'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import "./lib/mui/css/mui.css"
 import store from './store'
+// 还需要加载图标字体文件
+import './lib/mui/css/icons-extra.css'
 
 // 移动端高清屏适配方案
 import './rem.js'
