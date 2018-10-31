@@ -1,13 +1,11 @@
 <template>
 	<div class="dragonDetail">
-		<mt-header title="顶峰 开化龙顶 2017明前茶 绿茶  50g 黄罐单罐">
+		<mt-header :title="title">
 		    <mt-button icon="back" slot="left" @click="goBack">返回</mt-button>
 		</mt-header>
 	<div class="swipe">
 		<mt-swipe :auto="4000">
- 	 <mt-swipe-item>1</mt-swipe-item>
- 	 <mt-swipe-item>2</mt-swipe-item>
- 	 <mt-swipe-item>3</mt-swipe-item>
+ 	 <mt-swipe-item v-for="(item,index) in banner" :key="index"><img class="banner" :title="item.title" :src="item.img_url"/></mt-swipe-item>
 		</mt-swipe>
 		</div>
 		<div class="divider"></div>
@@ -29,32 +27,43 @@
 					<button class="numbtn" type="button" @click="goAdd">+</button>
 				 </div> 
 				 <div class="pay">
-				<mt-button type="primary">立即购买</mt-button>
-				  <mt-button type="danger">加入购物车</mt-button>
+				<mt-button type="primary" size="small">立即购买</mt-button>
+				  <mt-button type="danger" size="small">加入购物车</mt-button>
 				  </div>
 			</div>
 			<div class="divider"></div>
 		<div class="cell-item">
-			商品参数
+			商品参数 <mt-button type="default" size="small" class="arg-btn">详情</mt-button>
 		</div>
-		<div class="cell-item">
-			产品货号:11<br>
-			产品货号:11<br>
-			产品货号:11<br>
-			产品货号:11<br>
-			产品货号:11<br>
+		<div class="cell-item argument">
+			<p>
+			名称： 西湖龙井<br>
+			原产地： 浙江<br>
+			净含量： 125g*2<br>
+			包装： 礼盒装<br>
+			色香形味： 扁平光滑糙米黄<br>
+			存储形式： 干燥低温 密封<br>
+			货到付款： 支持<br>
+			破损包赔	： 支持<br>
+			</p>
 		</div>
 		</div>
-		
+		<NavBar></NavBar>
 	</div>
 </template>
 <script>
 import { Swipe, SwipeItem,Button } from 'mint-ui';
-
+import NavBar from '@/view/navBar'
 	export default{
 		data(){
 			return {
-				num:1
+				num:1,
+				banner:[
+				{title:'龙顶',img_url:'/static/img/new1.jpg'},
+				{title:'龙顶',img_url:'/static/img/new2.jpg'},
+				{title:'龙顶',img_url:'/static/img/new3.jpg'},
+				{title:'龙顶',img_url:'/static/img/new4.jpg'},],
+				title:"顶峰 开化龙顶 2017明前茶 绿茶  50g 黄罐单罐"
 			}
 		},
 		methods:{
@@ -73,7 +82,8 @@ import { Swipe, SwipeItem,Button } from 'mint-ui';
 		components:{
 			'Swipe':Swipe.name,
 			'SwipeItem':SwipeItem.name,
-			'Button':Button.name
+			'Button':Button.name,
+			NavBar
 		}
 		
 	}
@@ -95,7 +105,10 @@ import { Swipe, SwipeItem,Button } from 'mint-ui';
 		height:10rem;
 		background: red;
 	}
-
+.banner{
+	width:100%;
+	height:10rem;
+}
 .cell{
   background-color: #fff;
   font-size: .7rem;
@@ -175,5 +188,12 @@ button::after{
 	margin-top:0.4rem;
 	margin-right: 1rem;
 	clear: both;
+}
+.argument{
+	margin-bottom: 3rem;
+}
+.arg-btn{
+	float: right;
+	
 }
 </style>
