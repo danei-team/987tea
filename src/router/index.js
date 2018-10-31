@@ -7,6 +7,8 @@ import NavBar from '@/view/navBar'
 import Home from '@/view/home'
 // 分类
 import Classify from '@/view/classify'
+// 商品页
+import product from '@/view/product'
 // 用户注册
 import Register from '@/view/register'
 // 用户登录
@@ -26,6 +28,7 @@ export default new Router({
     		{ path:'/home',component:Home },
         { path:'/dragonDetail',component:DragonDetail },
     		{ path:'/classify',component:Classify },
+    		{ path:'/product',name:'product',component:product },
         { path:'/shopping',component:Shopping },
         { path:'/personal',component:Personal },
     		{ path:'/register',component:Register },

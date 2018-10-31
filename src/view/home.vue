@@ -6,9 +6,10 @@
 				<mt-search v-model="value"  cancel-text="取消"  placeholder="搜索您想要的产品"></mt-search>
 			</div>
 			<div class="icon">
-				<i class="fa fa-bars" aria-hidden="true"></i>
+				<i class="fa fa-bars" aria-hidden="true" @click="droplist" style=""></i>
 			</div>
 		</header>
+		<droplist style="height:0px" id="droplist"></droplist>
 		<section class="swipe">
 			<mt-swipe :auto="4000">
 				<mt-swipe-item v-for="(item,index) in imgs" :key="index">
@@ -101,6 +102,7 @@
 	import Login from '@/view/login'
 
 	import {api} from '../global/api'
+	import droplist from './droplist'
 	export default{
 		data(){
 			return {
@@ -113,23 +115,37 @@
 				// Img:[img14,img15,img16,img17,img18,img19],
 				loading:false,
 				products:'',
+				showList:false
 			}
 		},
 		components:{
-			NavBar
+			NavBar,
+			droplist
 		},
 		mounted:function(){
 			this.getData();
 		},
 		methods:{
 			getData:function(){
-				console.log("aaa");
 				this.$http.get(api.home).then((response) => {
 					this.products=response.data;
 				})
 			},
 			handleSelected:function(index){
 				this.$router.push({ path:'/dragonDetail',component:DragonDetail })
+			},
+			droplist:function(){
+				var droplist = document.getElementById('droplist')
+				var icon = document.querySelector('.icon i')
+				if(this.showList){
+					this.showList = false
+					droplist.style.height = '0px'
+					icon.style = 'transform:rotate(0deg);'
+				}else{
+					this.showList = true
+					droplist.style.height = '336px'
+					icon.style = 'transform:rotate(90deg);'
+				}
 			}
 		}
 	}
@@ -138,6 +154,7 @@
 <style >
 	.home{
 		background: #fff;
+		position: relative;
 	}
 	/*标题、搜索框、bars*/
 	.home header{
@@ -189,7 +206,7 @@
 		font-size: 1rem;
 		color: #fff;
 	}
-
+	.icon i{transition: .5s all;}
 	/*轮播图*/
 	.home .swipe{
 		width: 100%;
