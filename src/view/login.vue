@@ -80,7 +80,7 @@
 				}
 				else{
 					this.$router.push({ path:'/',component:Home });
-					// this.loginStatus=true;
+					//this.loginStatus=true;
 					store.dispatch('setloginStatus',true);
 					// console.log("login页面的loginStatus值",this.loginStatus);
 				}

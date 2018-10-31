@@ -59,19 +59,12 @@
 		},
 		components:{
 			NavBar
-		},
-		computed:{
-			loginStatus(){
-				return this.$store.state.loginStatus;
-			}
-		},	   
+		},   
 		mounted:function(){
-			// 未登录状态重定向到登录页面
-			// if(!this.loginStatus){
-			// 	this.$router.push({path:'/login',component:Login})
-			// }
-			// console.log('tai',this.loginStatus) 
-            // console.log(0)
+            // 未登录状态重定向到登录页面
+			if(!this.loginStatus){
+				this.$router.push({path:'/login',component:Login})
+			}
             if(this.$store.getters.optList.length){
                 this.list = this.$store.getters.optList;
                 this.show = 1
@@ -108,7 +101,10 @@
                     sum += item.new_price * item.num;
                 }
                 return sum;
-            }
+            },
+            loginStatus(){
+				return this.$store.state.loginStatus;
+			}
         }
     }
 </script>

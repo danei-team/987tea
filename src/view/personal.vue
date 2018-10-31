@@ -113,6 +113,7 @@
 			if(!this.loginStatus){
 				this.$router.push({path:'/login',component:Login})
 			}
+            console.log(this.loginStatus)			
 		},
 		methods:{
 			goBack:function(){

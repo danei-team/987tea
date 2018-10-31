@@ -65,5 +65,6 @@
 		color: #ff3600;
 	}
 	#cart{position: relative;}
-	.count{position:absolute;top:5px;right:135px;height:16px;width:16px;background:red;text-align: center;line-height: 15px;border-radius:50%;color:#fafafa}
+	.mint-tab-item-label{position: relative;}	
+	.count{position:absolute;top:-0.2rem;right:1.4rem;height:16px;width:16px;background:red;text-align: center;line-height: 15px;border-radius:50%;color:#fafafa}
 </style>
