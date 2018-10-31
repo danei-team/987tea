@@ -8,7 +8,7 @@
 		</div>
 		<div class="app_member" v-if="show == 1">
         <div class="mui-card">
-            <div class="mui-card-header">购物车</div>
+            <div class="mui-card-header">我的购物车</div>
 			<div class="divider"></div>
             <div class="mui-card-content">
                 <div class="mui-card-content-inner">
@@ -114,6 +114,7 @@
 }
 </script>
 <style>
+ul{list-style-type: none;}
 	/*头部*/
 	.shopping .mint-header{
 		background-color:#1b1b20;
@@ -141,9 +142,157 @@
 .mui-table-view .mui-table-view-cell .mui-media-object{ max-width:50px;max-height:50px;}
 .mui-table-view .mui-table-view-cell { padding:6px }
 .mui-table-view .mui-table-view-cell .mui-ellipsis{ display:flex; justify-content: space-between}
-.mui-card{box-shadow:none;}
 
 /*分割块*/
 .divider{height:10px;background:#f1f1f1;}
+
+/*mui*/
+.mui-card {
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+    border-radius: 2px;
+    background-color: white;
+    background-clip: padding-box;
+}
+.mui-card-header {
+    font-size: 17px;
+	color:#5d5d72
+}
+.mui-card-header, .mui-card-footer {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    min-height: 30px;
+    padding: 10px 15px;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.mui-card-header:after {
+    top: auto;
+    bottom: 0;
+}
+.mui-card-header:after, .mui-card-footer:before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.mui-card-content {
+    font-size: 14px;
+    position: relative;
+}
+.mui-card-content-inner {
+    position: relative;
+    padding: 15px;
+}
+.mui-card-footer {
+    color: #6d6d72;
+    border-radius: 0 0 2px 2px;
+}
+.mui-table-view .mui-table-view-cell .mui-media-object {
+    max-width: 50px;
+    max-height: 50px;
+}
+.mui-table-view .mui-media-object.mui-pull-left {
+    margin-right: 10px;
+}
+.mui-table-view .mui-media-object {
+    line-height: 42px;
+    max-width: 42px;
+    height: 42px;
+}
+.mui-pull-left {
+    float: left;
+}
+.mui-btn-numbox-minus {
+    left: 0;
+    border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	 font-size: 18px;
+    font-weight: normal;
+    line-height: 100%;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 40px;
+    height: 100%;
+    padding: 0;
+    color: #555;
+    border: none;
+    border-radius: 0;
+    background-color: #f9f9f9;
+}
+.mui-table-view .mui-table-view-cell .mui-ellipsis {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.mui-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.mui-numbox {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    width: 50px;
+    height: 35px;
+    padding: 0 40px 0 40px;
+    vertical-align: top;
+    vertical-align: middle;
+    border: solid 1px #bbb;
+    border-radius: 3px;
+    background-color: #efeff4;
+}
+.mui-numbox .mui-input-numbox {
+    display: inline-block;
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    text-overflow: ellipsis;
+    word-break: normal;
+    border: none !important;
+    border-right: solid 1px #ccc !important;
+    border-left: solid 1px #ccc !important;
+	border-radius: 0 !important;
+	
+}
+.mui-btn-numbox-plus{
+    right: 0;
+    border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	 font-size: 18px;
+    font-weight: normal;
+    line-height: 100%;
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    width: 40px;
+    height: 100%;
+    padding: 0;
+    color: #555;
+    border: none;
+    border-radius: 0;
+	background-color: #f9f9f9;
+	border-left:solid 1px #ccc !important
+}
 
 </style>
