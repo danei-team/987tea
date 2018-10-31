@@ -223,10 +223,10 @@
 		position: relative;top: 15px;
 		color: #fff;
 	}
-	.icon .img1{position: absolute;top: -7px;left: 10px;width: 32px;height: 32px;transform-origin: center center;transition: .5s all ease-in-out;transform: rotate(0deg);}
-	.icon .img2{position: absolute;top: 12px;left: -2px;width: 22px;height: 22px;}
-	.img_box{position: absolute;top: 12px;left: -2px;width: 22px;height: 22px;overflow: hidden;}
-	.icon .img3{width: 22px;height: 20px;transition: .5s all ease-in-out;}	
+	.icon .img1{position: absolute;top: -.4375rem;left: .625rem;width: 1.6rem;height:1.6rem;transform-origin: center center;transition: .5s all ease-in-out;transform: rotate(0deg);}
+	.icon .img2{position: absolute;top: 0.5rem;left: -2px;width: 1.2rem;height: 1.3rem;}
+	.img_box{position: absolute;top: 0.5rem;left: -2px;width: 1.2rem;height: 1.3rem;overflow: hidden;}
+	.icon .img3{width: 1.2rem;height: 1.3rem;transition: .5s all ease-in-out;}	
 	/*轮播图*/
 	.home .swipe{
 		width: 100%;
