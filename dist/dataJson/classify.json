@@ -4,27 +4,27 @@
 			"title":"乌龙茶",
 			"items":[
 				{
-					"img":"/static/img/wr1.jpg",
+					"img":"./img/wr1.jpg",
 					"text":"安溪铁观音"
 				},
 				{
-					"img":"/static/img/wr2.jpg",
+					"img":"./img/wr2.jpg",
 					"text":"武夷大红袍"
 				},
 				{
-					"img":"/static/img/wr3.jpg",
+					"img":"./img/wr3.jpg",
 					"text":"台湾高山茶"
 				},
 				{
-					"img":"/static/img/wr4.jpg",
+					"img":"./img/wr4.jpg",
 					"text":"广东单枞"
 				},
 				{
-					"img":"/static/img/wr5.jpg",
+					"img":"./img/wr5.jpg",
 					"text":"漳平水仙"
 				},
 				{
-					"img":"/static/img/wr6.jpg",
+					"img":"./img/wr6.jpg",
 					"text":"其他乌龙茶"
 				}
 			]
@@ -33,31 +33,31 @@
 			"title":"红茶",
 			"items":[
 				{
-					"img":"/static/img/redtea1.jpg",
+					"img":"./img/redtea1.jpg",
 					"text":"金骏眉"
 				},
 				{
-					"img":"/static/img/redtea2.jpg",
+					"img":"./img/redtea2.jpg",
 					"text":"正山小种"
 				},
 				{
-					"img":"/static/img/redtea3.jpg",
+					"img":"./img/redtea3.jpg",
 					"text":"祁门红茶"
 				},
 				{
-					"img":"/static/img/redtea4.jpg",
+					"img":"./img/redtea4.jpg",
 					"text":"云南滇红"
 				},
 				{
-					"img":"/static/img/redtea5.jpg",
+					"img":"./img/redtea5.jpg",
 					"text":"英德 红茶"
 				},
 				{
-					"img":"/static/img/redtea6.jpg",
+					"img":"./img/redtea6.jpg",
 					"text":"锡兰 红茶"
 				},
 				{
-					"img":"/static/img/redtea7.jpg",
+					"img":"./img/redtea7.jpg",
 					"text":"九曲 红梅"
 				}
 			]
@@ -66,27 +66,27 @@
 			"title":"茶具",
 			"items":[
 				{
-					"img":"/static/img/cj1.jpg",
+					"img":"./img/cj1.jpg",
 					"text":"陶瓷 茶具"
 				},
 				{
-					"img":"/static/img/cj2.jpg",
+					"img":"./img/cj2.jpg",
 					"text":"紫砂 茶具"
 				},
 				{
-					"img":"/static/img/cj3.jpg",
+					"img":"./img/cj3.jpg",
 					"text":"玻璃 茶具"
 				},
 				{
-					"img":"/static/img/cj4.jpg",
+					"img":"./img/cj4.jpg",
 					"text":"茶盘"
 				},
 				{
-					"img":"/static/img/cj5.jpg",
+					"img":"./img/cj5.jpg",
 					"text":"茶道 配件"
 				},
 				{
-					"img":"/static/img/cj6.jpg",
+					"img":"./img/cj6.jpg",
 					"text":"铁壶"
 				}
 			]
